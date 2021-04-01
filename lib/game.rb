@@ -57,6 +57,7 @@ class Game
         turn 
       else 
         board.update(input, player)
+        puts "Player #{current_player} "
         board.display
       end 
     end 

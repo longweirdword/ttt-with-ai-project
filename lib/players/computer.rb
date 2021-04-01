@@ -7,7 +7,7 @@ module Players class Computer < Player
            "#{best_move(board) + 1}"
         end 
     end 
-    
+
 
     def best_move(board)
         win(board) || block(board)  || corner(board) || other(board)
