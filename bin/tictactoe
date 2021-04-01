@@ -1,3 +1,86 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+class CLI 
+    def start
+        puts "Welcome to Tic-Tac-Toe!"
+        puts "                       "
+        puts "-----------------------"
+        puts "Choose your players:"
+        puts "Enter 1 for one player vs CPU"
+        puts "Enter 2 for two player"
+        puts "Enter 3 for CPU vs CPU"
+        input = gets.strip.to_i 
+        
+        if input == 1
+            one_player
+
+        elsif input == 2 
+            two_player
+
+        
+        elsif input == 3 
+            cpu_vs_cpu
+
+
+        else 
+            puts "Invalid entry! Please try again!"
+            start 
+
+        end 
+        play_again?
+    end 
+
+    def one_player 
+        puts "Who should go first and be 'X'?"
+        puts "Enter 1 for human"
+        puts "Enter 2 for CPU"
+        input = gets.strip.to_i 
+            if input == 1 
+                game = Game.new(Players::Human.new("X"), Players::Computer.new("O"), board = Board.new)
+                while !game.over? 
+                    game.play 
+                end 
+            elsif input == 2 
+                game = Game.new(Players::Computer.new("X"), Players::Human.new("O"), board = Board.new)
+                while !game.over? 
+                    game.play 
+                end 
+            else 
+                puts "Invalid entry! Please try again."
+                one_player
+            end 
+        end 
+
+        def two_player 
+            game = Game.new 
+            while !game.over?
+                game.play
+            end 
+        end 
+
+        def cpu_vs_cpu 
+            game = Game.new(Players::Computer.new("X"), Players::Computer.new("O"), board = Board.new)
+                while !game.over? 
+                    game.play 
+                end 
+        end 
+
+        def play_again? 
+            puts "             "
+            puts " Would you like to play again? Y/N"
+            input = gets.strip
+            if input.downcase == "y" 
+                start 
+            elsif input.downcase == "n"
+                puts "                   "
+                puts "Y'all come back now"
+            else 
+                puts "Invalid entry! Please try again."
+                play_again?
+            end 
+        end 
+end 
+
+CLI.new.start 

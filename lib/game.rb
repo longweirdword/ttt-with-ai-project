@@ -47,12 +47,17 @@ class Game
     end 
 
     def turn
+      puts "                              "
+      puts "Choose a position between 1-9:"
+      board.display 
       player = current_player
       input = player.move(board)
       if !board.valid_move?(input)
+        puts "Invalid move! Please try again."
         turn 
       else 
         board.update(input, player)
+        board.display
       end 
     end 
 
