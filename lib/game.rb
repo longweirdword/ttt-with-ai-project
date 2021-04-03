@@ -57,7 +57,8 @@ class Game
         turn 
       else 
         board.update(input, player)
-        puts "Player #{current_player} "
+        puts"                       "
+        puts "Player #{player.token} moved to #{input}"
         board.display
       end 
     end 

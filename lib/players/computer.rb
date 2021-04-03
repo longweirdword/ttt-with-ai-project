@@ -1,6 +1,7 @@
 module Players class Computer < Player 
 
     def move(board)
+        sleep 2
         if !board.taken?("5")
             "5"
         else 
