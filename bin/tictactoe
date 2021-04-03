@@ -4,6 +4,7 @@ require_relative '../config/environment'
 
 class CLI 
     def start
+        
         puts "Welcome to Tic-Tac-Toe!"
         puts "                       "
         puts "-----------------------"
